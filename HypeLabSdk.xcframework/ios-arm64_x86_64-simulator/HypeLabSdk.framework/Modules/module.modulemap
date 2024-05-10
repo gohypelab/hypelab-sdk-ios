@@ -1,0 +1,6 @@
+framework module HypeLabSdk {
+  umbrella header "HypeLabSdk.h"
+  export *
+
+  module * { export * }
+}
