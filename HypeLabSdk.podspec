@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = 'HypeLabSdk'
-  spec.version      = '1.0.0'
+  spec.version      = '1.0.1'
   spec.summary      = 'HypeLab SDK for iOS'
   spec.description  = 'Integrate HypeLab ads into your iOS app'
   spec.homepage     = 'https://github.com/gohypelab/hypelab-sdk-ios'
