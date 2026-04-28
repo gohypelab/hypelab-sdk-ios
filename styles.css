@@ -65,6 +65,11 @@ pre code {
   line-height: 1.55;
 }
 
+pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -361,6 +366,82 @@ h3 {
   padding-top: 0.4rem;
 }
 
+.code-block {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(236, 244, 255, 0.12);
+  border-radius: 6px;
+  color: #d8e4f5;
+  background: rgba(255, 255, 255, 0.055);
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.copy-button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.copy-button:hover,
+.copy-button:focus-visible {
+  color: #fff;
+  border-color: rgba(236, 244, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.copy-button.copied {
+  border-color: rgba(85, 189, 122, 0.65);
+  color: #b9f0c9;
+  background: rgba(85, 189, 122, 0.12);
+}
+
+.hero-panel .code-block {
+  padding: 4rem 1.4rem 1.4rem;
+}
+
+.hero-panel .code-block pre,
+.code-card .code-block pre,
+.callout .code-block pre {
+  padding: 0;
+}
+
+.hero-panel .copy-button {
+  top: 1.4rem;
+  right: 1.4rem;
+}
+
+.code-card .copy-button,
+.callout .copy-button {
+  top: 0;
+  right: 0;
+}
+
+.code-card .code-block,
+.callout .code-block {
+  padding-top: 2.65rem;
+}
+
 .responsibility-grid > div {
   border-left: 4px solid var(--blue);
   padding: 0.25rem 0 0.25rem 1.2rem;
@@ -472,5 +553,14 @@ h3 {
   .code-card,
   .callout {
     padding: 1rem;
+  }
+
+  .hero-panel .code-block {
+    padding: 3.6rem 1rem 1rem;
+  }
+
+  .hero-panel .copy-button {
+    top: 1rem;
+    right: 1rem;
   }
 }

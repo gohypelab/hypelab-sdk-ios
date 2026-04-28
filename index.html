@@ -8,6 +8,10 @@
       content="HypeLab SDK for iOS lets app developers display HypeLab ads in iPhone and iPad apps through Swift Package Manager or CocoaPods."
     >
     <title>HypeLab SDK for iOS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    >
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -35,7 +39,7 @@
           </p>
           <div class="actions" aria-label="Primary actions">
             <a class="button primary" href="#install">Install SDK</a>
-            <a class="button secondary" href="#skadnetwork">SKAdNetwork details</a>
+            <a class="button secondary" href="#skadnetwork">SKAdNetwork setup</a>
           </div>
           <dl class="facts" aria-label="SDK facts">
             <div>
@@ -59,7 +63,7 @@
             <span></span>
             <span></span>
           </div>
-          <pre><code>import HypeLabSdk
+          <pre><code class="language-swift">import HypeLabSdk
 
 let config = Config(
   environment: "production",
@@ -101,48 +105,47 @@ rewarded.onReward = {
 
       <section id="skadnetwork" class="split">
         <div>
-          <p class="eyebrow">Attribution readiness</p>
-          <h2>SKAdNetwork Participation</h2>
+          <p class="eyebrow">Attribution setup</p>
+          <h2>SKAdNetwork Setup</h2>
           <p>
-            HypeLab is preparing to register as an Apple SKAdNetwork ad network participant.
-            Apple requires ad networks to register before using SKAdNetwork attribution APIs,
-            receive an ad network identifier, provide a public key, and configure an
-            install-validation postback endpoint.
+            Apps that display HypeLab ads should include HypeLab's SKAdNetwork identifier
+            in their <code>Info.plist</code>. This allows iOS to attribute eligible App Store
+            installs from HypeLab ad impressions.
           </p>
           <p>
-            After Apple issues HypeLab's ad network identifier, app developers who display
-            HypeLab ads will add the lowercase identifier to their app's <code>Info.plist</code>.
+            Add the identifier provided by HypeLab under <code>SKAdNetworkItems</code> and
+            keep it lowercase.
           </p>
         </div>
         <div class="callout">
-          <h3>Developer setup</h3>
-          <pre><code>&lt;key&gt;SKAdNetworkItems&lt;/key&gt;
+          <h3>Info.plist</h3>
+          <pre><code class="language-xml">&lt;key&gt;SKAdNetworkItems&lt;/key&gt;
 &lt;array&gt;
   &lt;dict&gt;
     &lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;
     &lt;string&gt;YOUR_HYPELAB_SKADNETWORK_ID.skadnetwork&lt;/string&gt;
   &lt;/dict&gt;
 &lt;/array&gt;</code></pre>
-          <p class="note">Replace the placeholder with the official HypeLab SKAdNetwork ID after registration is complete.</p>
+          <p class="note">Replace the placeholder with the exact lowercase SKAdNetwork identifier provided by HypeLab.</p>
         </div>
       </section>
 
       <section class="band">
         <div class="responsibility-grid">
           <div>
-            <h3>Developers</h3>
+            <h3>Integration checklist</h3>
             <ul>
-              <li>Add HypeLab's issued SKAdNetwork identifier to <code>Info.plist</code>.</li>
+              <li>Add HypeLab's SKAdNetwork identifier to <code>Info.plist</code>.</li>
               <li>Use the current SDK release from this repository.</li>
               <li>Keep the identifier lowercase so iOS recognizes it.</li>
             </ul>
           </div>
           <div>
-            <h3>HypeLab</h3>
+            <h3>Where it goes</h3>
             <ul>
-              <li>Maintain the Apple-issued ad network identifier.</li>
-              <li>Sign eligible ads with the registered private key.</li>
-              <li>Receive and validate SKAdNetwork install-validation postbacks.</li>
+              <li>Set the key name to <code>SKAdNetworkItems</code>.</li>
+              <li>Add one dictionary entry for HypeLab.</li>
+              <li>Set <code>SKAdNetworkIdentifier</code> to HypeLab's identifier.</li>
             </ul>
           </div>
         </div>
@@ -157,12 +160,12 @@ rewarded.onReward = {
           <article class="code-card">
             <h3>Swift Package Manager</h3>
             <p>Add this repository URL in Xcode under File > Add Package Dependencies.</p>
-            <pre><code>https://github.com/gohypelab/hypelab-sdk-ios</code></pre>
+            <pre><code class="language-text">https://github.com/gohypelab/hypelab-sdk-ios</code></pre>
           </article>
           <article class="code-card">
             <h3>CocoaPods</h3>
             <p>Add the pod to your Podfile, then run <code>pod install</code>.</p>
-            <pre><code>pod 'HypeLabSdk', '~> 1.0'</code></pre>
+            <pre><code class="language-ruby">pod 'HypeLabSdk', '~> 1.0'</code></pre>
           </article>
         </div>
       </section>
@@ -175,7 +178,7 @@ rewarded.onReward = {
         <div class="code-columns">
           <article class="code-card">
             <h3>Swift</h3>
-            <pre><code>import HypeLabSdk
+            <pre><code class="language-swift">import HypeLabSdk
 
 let rewarded = Rewarded(
   placementSlug: "your-placement-slug"
@@ -197,7 +200,7 @@ rewarded.show()</code></pre>
           </article>
           <article class="code-card">
             <h3>Objective-C</h3>
-            <pre><code>#import &lt;HypeLabSdk/Rewarded.h&gt;
+            <pre><code class="language-objectivec">#import &lt;HypeLabSdk/Rewarded.h&gt;
 
 Rewarded *rewarded = [[Rewarded alloc]
   initWithPlacementSlug:@"your-placement-slug"];
@@ -237,5 +240,71 @@ rewarded.onError = ^{
       <span>HypeLab SDK for iOS</span>
       <a href="https://github.com/gohypelab/hypelab-sdk-ios">View repository</a>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/objectivec.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/ruby.min.js"></script>
+    <script>
+      const copyText = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      };
+
+      const copyIcon = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="8" y="8" width="10" height="10" rx="2"></rect>
+          <path d="M6 16H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      `;
+      const checkIcon = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+      `;
+
+      document.querySelectorAll("pre").forEach((pre) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "code-block";
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const button = document.createElement("button");
+        button.className = "copy-button";
+        button.type = "button";
+        button.innerHTML = copyIcon;
+        button.setAttribute("aria-label", "Copy code snippet");
+        button.title = "Copy";
+        wrapper.appendChild(button);
+
+        button.addEventListener("click", async () => {
+          const code = pre.querySelector("code");
+          await copyText(code.innerText);
+          button.innerHTML = checkIcon;
+          button.classList.add("copied");
+          button.setAttribute("aria-label", "Copied code snippet");
+          button.title = "Copied";
+          window.setTimeout(() => {
+            button.innerHTML = copyIcon;
+            button.classList.remove("copied");
+            button.setAttribute("aria-label", "Copy code snippet");
+            button.title = "Copy";
+          }, 1600);
+        });
+      });
+
+      hljs.highlightAll();
+    </script>
   </body>
 </html>

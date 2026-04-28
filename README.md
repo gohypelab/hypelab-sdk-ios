@@ -18,11 +18,11 @@ The current SDK includes:
 - Device and simulator framework slices
 - Swift Package Manager and CocoaPods distribution
 
-## SKAdNetwork Participation
+## SKAdNetwork Setup
 
-HypeLab is preparing to register as an Apple SKAdNetwork ad network participant. Apple requires ad networks to register before using SKAdNetwork attribution APIs, receive an ad network identifier, provide a public key, and configure an install-validation postback endpoint.
+Apps that display HypeLab ads should include HypeLab's SKAdNetwork identifier in their `Info.plist`. This allows iOS to attribute eligible App Store installs from HypeLab ad impressions.
 
-Once Apple issues HypeLab's ad network identifier, app developers who display HypeLab ads will add that lowercase identifier to their app's `Info.plist` under `SKAdNetworkItems`.
+Add the identifier provided by HypeLab under `SKAdNetworkItems`:
 
 ```xml
 <key>SKAdNetworkItems</key>
@@ -34,20 +34,13 @@ Once Apple issues HypeLab's ad network identifier, app developers who display Hy
 </array>
 ```
 
-Do not ship the placeholder above. Replace it with the official HypeLab SKAdNetwork ID after registration is complete.
+Replace `YOUR_HYPELAB_SKADNETWORK_ID.skadnetwork` with the exact lowercase SKAdNetwork identifier provided by HypeLab.
 
-Developer responsibilities for SKAdNetwork-enabled integrations:
+Integration checklist:
 
-- Include HypeLab's issued SKAdNetwork identifier in the source app's `Info.plist`
+- Add HypeLab's SKAdNetwork identifier to the source app's `Info.plist`
 - Use the current HypeLab SDK release from this repository
 - Keep the identifier lowercase so iOS recognizes it
-
-HypeLab ad network responsibilities:
-
-- Maintain the Apple-issued ad network identifier
-- Sign eligible ads with the registered private key
-- Receive and validate SKAdNetwork install-validation postbacks
-- Publish integration guidance for app developers
 
 ## Requirements
 
