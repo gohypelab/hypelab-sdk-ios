@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="HypeLab SDK for iOS lets app developers display HypeLab ads in iPhone and iPad apps through Swift Package Manager or CocoaPods."
+    >
+    <title>HypeLab SDK for iOS</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="HypeLab SDK for iOS home">
+        <span class="brand-mark">H</span>
+        <span>HypeLab SDK</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#skadnetwork">SKAdNetwork</a>
+        <a href="#install">Install</a>
+        <a href="#rewarded">Rewarded Ads</a>
+        <a href="https://github.com/gohypelab/hypelab-sdk-ios">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">iOS ad monetization SDK</p>
+          <h1>HypeLab SDK for iOS</h1>
+          <p class="lede">
+            Display HypeLab ads in iPhone and iPad apps with a binary XCFramework
+            distributed through Swift Package Manager and CocoaPods.
+          </p>
+          <div class="actions" aria-label="Primary actions">
+            <a class="button primary" href="#install">Install SDK</a>
+            <a class="button secondary" href="#skadnetwork">SKAdNetwork details</a>
+          </div>
+          <dl class="facts" aria-label="SDK facts">
+            <div>
+              <dt>iOS</dt>
+              <dd>15.0+</dd>
+            </div>
+            <div>
+              <dt>Distribution</dt>
+              <dd>SPM, CocoaPods</dd>
+            </div>
+            <div>
+              <dt>Formats</dt>
+              <dd>Device, simulator</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-panel" aria-label="SDK quick start preview">
+          <div class="panel-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <pre><code>import HypeLabSdk
+
+let config = Config(
+  environment: "production",
+  propertySlug: "your-property-slug"
+)
+
+HypeLab.initialize(config)
+
+let rewarded = Rewarded(
+  placementSlug: "your-placement-slug"
+)
+
+rewarded.onReward = {
+  print("Reward the user")
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="section-heading">
+          <p class="eyebrow">What ships today</p>
+          <h2>SDK Capabilities</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Rewarded ads</h3>
+            <p>Load and present rewarded ad placements with callback hooks for readiness, reward, playback, impressions, clicks, and errors.</p>
+          </article>
+          <article class="feature">
+            <h3>Native iOS integration</h3>
+            <p>Use the same binary framework from Swift or Objective-C apps with public headers included in the package.</p>
+          </article>
+          <article class="feature">
+            <h3>Release-ready packaging</h3>
+            <p>Includes an XCFramework for CocoaPods and a zipped XCFramework target for Swift Package Manager.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skadnetwork" class="split">
+        <div>
+          <p class="eyebrow">Attribution readiness</p>
+          <h2>SKAdNetwork Participation</h2>
+          <p>
+            HypeLab is preparing to register as an Apple SKAdNetwork ad network participant.
+            Apple requires ad networks to register before using SKAdNetwork attribution APIs,
+            receive an ad network identifier, provide a public key, and configure an
+            install-validation postback endpoint.
+          </p>
+          <p>
+            After Apple issues HypeLab's ad network identifier, app developers who display
+            HypeLab ads will add the lowercase identifier to their app's <code>Info.plist</code>.
+          </p>
+        </div>
+        <div class="callout">
+          <h3>Developer setup</h3>
+          <pre><code>&lt;key&gt;SKAdNetworkItems&lt;/key&gt;
+&lt;array&gt;
+  &lt;dict&gt;
+    &lt;key&gt;SKAdNetworkIdentifier&lt;/key&gt;
+    &lt;string&gt;YOUR_HYPELAB_SKADNETWORK_ID.skadnetwork&lt;/string&gt;
+  &lt;/dict&gt;
+&lt;/array&gt;</code></pre>
+          <p class="note">Replace the placeholder with the official HypeLab SKAdNetwork ID after registration is complete.</p>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="responsibility-grid">
+          <div>
+            <h3>Developers</h3>
+            <ul>
+              <li>Add HypeLab's issued SKAdNetwork identifier to <code>Info.plist</code>.</li>
+              <li>Use the current SDK release from this repository.</li>
+              <li>Keep the identifier lowercase so iOS recognizes it.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>HypeLab</h3>
+            <ul>
+              <li>Maintain the Apple-issued ad network identifier.</li>
+              <li>Sign eligible ads with the registered private key.</li>
+              <li>Receive and validate SKAdNetwork install-validation postbacks.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="install" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Installation</p>
+          <h2>Add HypeLab SDK</h2>
+        </div>
+        <div class="install-grid">
+          <article class="code-card">
+            <h3>Swift Package Manager</h3>
+            <p>Add this repository URL in Xcode under File > Add Package Dependencies.</p>
+            <pre><code>https://github.com/gohypelab/hypelab-sdk-ios</code></pre>
+          </article>
+          <article class="code-card">
+            <h3>CocoaPods</h3>
+            <p>Add the pod to your Podfile, then run <code>pod install</code>.</p>
+            <pre><code>pod 'HypeLabSdk', '~> 1.0'</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section id="rewarded" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Rewarded placements</p>
+          <h2>Integrate Rewarded Ads</h2>
+        </div>
+        <div class="code-columns">
+          <article class="code-card">
+            <h3>Swift</h3>
+            <pre><code>import HypeLabSdk
+
+let rewarded = Rewarded(
+  placementSlug: "your-placement-slug"
+)
+
+rewarded.onReady = {
+  print("Rewarded ad is ready")
+}
+
+rewarded.onReward = {
+  print("Reward the user")
+}
+
+rewarded.onError = {
+  print("Rewarded ad failed to load")
+}
+
+rewarded.show()</code></pre>
+          </article>
+          <article class="code-card">
+            <h3>Objective-C</h3>
+            <pre><code>#import &lt;HypeLabSdk/Rewarded.h&gt;
+
+Rewarded *rewarded = [[Rewarded alloc]
+  initWithPlacementSlug:@"your-placement-slug"];
+
+rewarded.onReady = ^{
+  NSLog(@"Rewarded ad is ready");
+};
+
+rewarded.onReward = ^{
+  NSLog(@"Reward the user");
+};
+
+rewarded.onError = ^{
+  NSLog(@"Rewarded ad failed to load");
+};
+
+[rewarded show];</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="section-heading">
+          <p class="eyebrow">Binary distribution</p>
+          <h2>Framework Contents</h2>
+        </div>
+        <div class="artifact-list" aria-label="Framework contents">
+          <span>HypeLabSdk.xcframework</span>
+          <span>HypeLabSdk.xcframework.zip</span>
+          <span>ios-arm64</span>
+          <span>ios-arm64_x86_64-simulator</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>HypeLab SDK for iOS</span>
+      <a href="https://github.com/gohypelab/hypelab-sdk-ios">View repository</a>
+    </footer>
+  </body>
+</html>
